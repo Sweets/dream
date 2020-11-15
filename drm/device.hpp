@@ -2,7 +2,7 @@
 
 class Device {
 public:
-    Device(std::string);
+    Device(const char*);
 private:
     int file_descriptor;
 };
