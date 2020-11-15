@@ -1,3 +1,4 @@
+#include <vector>
 #include <xf86drmMode.h>
 
 class Connector {
