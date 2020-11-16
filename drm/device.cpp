@@ -5,8 +5,9 @@
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 
-#include "connector.hpp"
 #include "device.hpp"
+
+#include "connector.cpp"
 
 Device::Device(const char *path) {
     this->file_descriptor = open(path, O_RDONLY);
@@ -19,21 +20,21 @@ Device::Device(const char *path) {
     // test if DRM device supports dumb buffers
 
     drmModeRes *resources;
-    drmModeConnector *connector;
+    drmModeConnector *conn;
 
     resources = drmModeGetResources(this->file_descriptor);
     assert(resources);
 
     for (unsigned int index = 0; index < resources->count_connectors; index++) {
-        connector = drmModeGetConnector(this->file_descriptor,
+        conn = drmModeGetConnector(this->file_descriptor,
             resources->connectors[index]);
 
-        if (!connector)
+        if (!conn)
             continue;
 
-        Connector(connector); // eventually add this to a vector
+        new Connector(conn); // eventually add this to a vector
 
-        drmModeFreeConnector(connector);
+        drmModeFreeConnector(conn);
     }
 
     drmModeFreeResources(resources);

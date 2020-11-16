@@ -2,8 +2,9 @@
 #include <xf86drmMode.h>
 
 class Connector {
-    Connector(drmModeConnector*);
 public:
+    Connector(drmModeConnector*);
+private:
     unsigned int id;
     std::vector<drmModeModeInfo> modes;
 };
