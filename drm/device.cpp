@@ -32,7 +32,8 @@ Device::Device(const char *path) {
         if (!conn)
             continue;
 
-        new Connector(conn); // eventually add this to a vector
+        new Connector(this->file_descriptor, resources, conn);
+        // eventually add this to a vector
 
         drmModeFreeConnector(conn);
     }
