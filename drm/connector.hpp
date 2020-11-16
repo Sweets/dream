@@ -6,6 +6,6 @@ public:
     Connector(int, drmModeRes*, drmModeConnector*);
 private:
     unsigned int id;
-    int ctrc_id;
+    int crtc_id;
     std::vector<drmModeModeInfo> modes;
 };
