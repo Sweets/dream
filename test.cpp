@@ -4,7 +4,7 @@
 
 int main() {
     /* drm shit */
-    Device("/dev/dri/card0");
+    new Device("/dev/dri/card0");
 
     return 0;
 }

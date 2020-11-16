@@ -3,8 +3,9 @@
 
 class Connector {
 public:
-    Connector(drmModeConnector*);
+    Connector(int, drmModeRes*, drmModeConnector*);
 private:
     unsigned int id;
+    int ctrc_id;
     std::vector<drmModeModeInfo> modes;
 };
