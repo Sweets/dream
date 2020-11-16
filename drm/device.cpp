@@ -31,8 +31,7 @@ Device::Device(const char *path) {
         if (!connector)
             continue;
 
-        // prepare it?
-        std::cout << "Connector found" << std::endl;
+        Connector(connector); // eventually add this to a vector
 
         drmModeFreeConnector(connector);
     }
